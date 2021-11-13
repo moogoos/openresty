@@ -1,9 +1,12 @@
 FROM openresty/openresty:focal
 
 
-RUN apt-get install libssl-dev
+RUN echo "deb http://security.ubuntu.com/ubuntu bionic-security main" > /etc/apt/sources.list.d/bionic.list
 
-RUN /usr/local/openresty/luajit/bin/luarocks install luajson
+RUN apt-get update
 
-RUN /usr/local/openresty/luajit/bin/luarocks install luaossl CRYPTO_DIR=/usr/local/openresty/openssl/ OPENSSL_DIR=/usr/local/openresty/openssl/
+RUN apt-get install libssl1.0-dev -y
+
+RUN /usr/local/openresty/luajit/bin/luarocks install luajson \
+    &&  /usr/local/openresty/luajit/bin/luarocks install luacrypto
 
