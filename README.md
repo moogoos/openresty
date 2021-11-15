@@ -19,4 +19,5 @@ To use this for portainer webhooks for example, add the following to your vhost 
          allow all;
          
          proxy_pass http://<internal_ip>:9000;
+     }
 ```
