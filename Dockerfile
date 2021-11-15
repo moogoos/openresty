@@ -1,6 +1,6 @@
 FROM openresty/openresty:focal
 
-
+## Need this to support old luacrypto libssl 1.0 which is not supported in 1.1
 RUN echo "deb http://security.ubuntu.com/ubuntu bionic-security main" > /etc/apt/sources.list.d/bionic.list
 
 RUN apt-get update
@@ -12,4 +12,4 @@ RUN /usr/local/openresty/luajit/bin/luarocks install luajson \
 
 COPY conf/nginx.conf /usr/local/openresty/nginx/conf/nginx.conf
 
-COPY lua/handler.lua /usr/local/openresty/nginx/lua/hanlder.lua
+COPY lua/handler.lua /usr/local/openresty/nginx/lua/handler.lua
