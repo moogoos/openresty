@@ -1,7 +1,7 @@
 # openresty
 
 This is a container that supports lua and more specifically luajson and luacrypto under ubuntu focal 20.04. This so it can be used as a reverse proxy authentication for
-github webhooks, and in my case, manage portainer webhooks instead of polling.
+github webhooks, and in my case, manage portainer webhooks instead of polling. Aren't you tired of copying and pasting stack configs or editing in the web editor?
 
 This adds an ENV GITHUB_SECRET which can be passed to a lua access_by_lua_file for validating the secret before proxy_pass initiative.
 
