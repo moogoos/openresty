@@ -10,3 +10,13 @@ nginx worker to continue the proxy_pass if all validators pass.
 
 To use this container, point your github webhook to this edge instance and set a secret in github webhooks and then pass the secret in your env to this docker container
 as GITHUB_SECRET
+
+To use this for portainer webhooks for example, add the following to your vhost or default config in nginx:
+
+```
+     location ~ /api/stacks/webhooks/(.*) {
+         access_by_lua_file lua/handler.lua;
+         allow all;
+         
+         proxy_pass http://<internal_ip>:9000;
+```
